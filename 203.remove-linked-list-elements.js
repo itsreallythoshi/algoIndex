@@ -28,8 +28,23 @@ var removeElements1 = function(head, val) {
     return head;
 }
 
-// more memory usage
 var removeElements2 = function(head, val) {
+    let dummy = new ListNode(0, head);
+    let prev = dummy, curr = head;
+
+    while (head) {
+        if (head.val === val) {
+            prev.next = head.next;
+        } else {
+            prev = head;
+        }        
+        head = head.next;        
+    }
+    return dummy.next;
+};
+
+// more memory usage
+var removeElements3 = function(head, val) {
     let dummy = new ListNode(0);
     let curr = dummy;
     let prev = null;
